@@ -4,20 +4,27 @@
 class Stack:
 
     def __init__(self, init_stack=None):
-        self.stack = init_stack if init_stack else []
+        self._stack = init_stack if init_stack else []
 
     def add(self, item):
-        self.stack.append(item)
-        return self.stack
+        self._stack.append(item)
+        return self._stack
 
     def pop(self):
-        return self.stack.pop()
+        return self._stack.pop()
 
     def is_empty(self):
-        return len(self.stack) > 0
+        return len(self._stack) > 0
 
     def size(self):
-        return len(self.stack)
+        return len(self._stack)
+
+    def __iter__(self):
+        for each in self._stack:
+            yield each
+
+    def __repr__(self):
+        return "".join(str(self._stack))
 
 
 class Node:

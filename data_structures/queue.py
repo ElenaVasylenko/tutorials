@@ -2,17 +2,24 @@
 class Queue:
 
     def __init__(self, init_queue=None):
-        self.queue = init_queue if init_queue else []
+        self._queue = init_queue if init_queue else []
 
     def add(self, item):
-        self.queue.append(item)
-        return self.queue
+        self._queue.append(item)
+        return self._queue
 
     def pop(self):
-        return self.queue.pop(0)
+        return self._queue.pop(0)
 
     def is_empty(self):
-        return len(self.queue) > 0
+        return len(self._queue) < 0
 
     def size(self):
-        return len(self.queue)
+        return len(self._queue)
+
+    def __iter__(self):
+        for each in self._queue:
+            yield each
+
+    def __repr__(self):
+        return "".join(str(self._queue))
